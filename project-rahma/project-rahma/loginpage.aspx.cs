@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 namespace project_rahma
 {
     public partial class loginpage : System.Web.UI.Page
@@ -25,35 +25,56 @@ namespace project_rahma
             {
                 Response.Redirect("admin-page.aspx");
             }
-            for (int i = 0; i < 35; i++)
+
+
+            string[] students = File.ReadAllLines(@"C:\Users\t\project-rahma\project-rahma\TextFile\students.txt");
+            int count = 0;
+            string[] idd = new string[1];
+            idd[0] = TextBox1.Text;
+            for (int y = 0; y < students.Length; y++)
             {
-
-
-                if ((id[i] == TextBox1.Text) && (pass[i] == TextBox2.Text))
+                if (idd[0] == students[y])
                 {
-                    //string message = txtFileContent.Text;
-                    //string filename = TextBox1.Text;
-                    //CreationOfTextFile(filename, TextBox2.Text);
-                    //lblmessage.Text = "File Created successfully"
-                    //
-                    //;
-                    Response.Redirect("question-page.aspx?ID=" + TextBox1.Text);
-                    //Response.Redirect("question-page.aspx?ID=" + TextBox1.Text);
-
+                    count++;
                 }
-                else if ((id[i] == "") && (pass[i] == ""))
-                {
-                    Response.Redirect("loginpage.aspx");
-                }
-                else if ((id[i] != TextBox1.Text) || (pass[i] != TextBox2.Text))
+            }
+            if (count == 1)
+            {
+                Label3.Text = "you have already took the survey";
+            }
+            else
+            {
+                for (int i = 0; i < 35; i++)
                 {
 
-                    Label3.Visible = true;
-                    Label3.Text = "your Id or Password not correct";
-                }
-                else if ((id[i] == "36") && (pass[i] == "36"))
-                {
-                    Response.Redirect("admin-page.aspx");
+
+                    if ((id[i] == TextBox1.Text) && (pass[i] == TextBox2.Text))
+                    {
+                        File.AppendAllLines(@"C:\Users\t\project-rahma\project-rahma\TextFile\students.txt", idd);
+                        //string message = txtFileContent.Text;
+                        //string filename = TextBox1.Text;
+                        //CreationOfTextFile(filename, TextBox2.Text);
+                        //lblmessage.Text = "File Created successfully"
+                        //
+                        //;
+                        Response.Redirect("question-page.aspx?ID=" + TextBox1.Text);
+                        //Response.Redirect("question-page.aspx?ID=" + TextBox1.Text);
+
+                    }
+                    else if ((id[i] == "") && (pass[i] == ""))
+                    {
+                        Response.Redirect("loginpage.aspx");
+                    }
+                    else if ((id[i] != TextBox1.Text) || (pass[i] != TextBox2.Text))
+                    {
+
+                        Label3.Visible = true;
+                        Label3.Text = "your Id or Password not correct";
+                    }
+                    else if ((id[i] == "36") && (pass[i] == "36"))
+                    {
+                        Response.Redirect("admin-page.aspx");
+                    }
                 }
             }
         }
