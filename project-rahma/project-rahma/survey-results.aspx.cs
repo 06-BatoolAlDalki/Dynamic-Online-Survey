@@ -21,7 +21,12 @@ namespace project_rahma
                 string check="";
                 foreach (string number in lines)
                 {
-                    int num = Convert.ToInt32(number);
+                    int num=0;
+                    if(number != "")
+                    {
+                         num = Convert.ToInt32(number);
+                    }
+               
                     if (r ==num ) 
                     
                     {

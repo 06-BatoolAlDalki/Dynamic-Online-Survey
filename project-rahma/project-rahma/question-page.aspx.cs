@@ -775,19 +775,27 @@ namespace project_rahma
             //string question = lines[0];           
 
             //File.AppendAllText(path2,question+ "   "+ answer1+"1");
-            for(int ii=0;ii<10;ii++)
+            for (int ii = 0; ii < 10; ii++)
             {
-                File.AppendAllText(path2, s+"  "+ lines[ii] + "   " + answer[ii] +"     ");
+                File.AppendAllText(path2, s + "  " + lines[ii] + "   " + answer[ii] + "     ");
 
             }
 
 
             //-----------------------------
-            if (File.ReadAllText("C:\\Users\\t\\project-rahma\\project-rahma\\TextFile\\ID.txt") == "")
-            {
-                File.AppendAllText(@"C:\Users\t\project-rahma\project-rahma\TextFile\ID.txt", "," + s);
-            }
-            else { File.AppendAllText(@"C:\Users\t\project-rahma\project-rahma\TextFile\ID.txt", s); }
+            //if (File.ReadAllText("C:\\Users\\t\\project-rahma\\project-rahma\\TextFile\\ID.txt") == ",")
+            //{
+
+            //    File.AppendAllText(@"C:\Users\t\project-rahma\project-rahma\TextFile\ID.txt", "," + s);
+            //}
+            //else { File.AppendAllText(@"C:\Users\t\project-rahma\project-rahma\TextFile\ID.txt", s); }
+
+
+
+            File.AppendAllText(@"C:\Users\t\project-rahma\project-rahma\TextFile\ID.txt", s+",");
+
+
+
 
             //string answer2;
             //answer2 = Button41.Text;
